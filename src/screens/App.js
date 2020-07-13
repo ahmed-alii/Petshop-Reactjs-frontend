@@ -1,14 +1,35 @@
 import React from 'react';
 import '../css/App.css';
-import Carousal from '../components/carousal'
-import ServicesSection from "../components/services";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import Home from "../screens/Home";
+import AboutPage from "./AboutPage";
+import LoginScreen from "./LoginScreen";
+import SignUpScreen from "./SignUpScreen";
+import ContactScreen from "./ContactScreen";
+import Store from "./Store";
+import HowItWorks from "./howItWorks";
+import Discussion from "./Discussion";
 
 function App() {
     return (
-        <div>
-            <Carousal/>
-            <ServicesSection/>
-        </div>
+        <Router>
+            <div>
+                <Navbar/>
+                <Switch>
+                    <Route path={'/'} exact component={Home}/>
+                    <Route path={'/about'} exact component={AboutPage}/>
+                    <Route path={'/loginScreen'} exact component={LoginScreen}/>
+                    <Route path={'/SignUpScreen'} exact component={SignUpScreen}/>
+                    <Route path={'/ContactScreen'} exact component={ContactScreen}/>
+                    <Route path={'/Store'} exact component={Store}/>
+                    <Route path={'/HowItWorks'} exact component={HowItWorks}/>
+                    <Route path={'/Discussion'} exact component={Discussion}/>
+                </Switch>
+                <Footer/>
+            </div>
+        </Router>
     );
 }
 

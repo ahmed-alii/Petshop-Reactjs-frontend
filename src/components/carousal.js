@@ -5,16 +5,20 @@ function Carousal() {
         <div id="carouselExampleFade" className={"carousel slide carousel-fade"} data-ride="carousel">
             <div className={"carousel-inner"}>
                 <div className={"carousel-item active"}>
-                    <img className={"d-block w-100"} src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+                    <img className={"d-block w-100"} src="img/bird.jpg"
                          alt="First slide"/>
                 </div>
                 <div className={"carousel-item"}>
-                    <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(16).jpg"
+                    <img className="d-block w-100" src="img/cats.jpg"
                          alt="Second slide"/>
                 </div>
                 <div className={"carousel-item"}>
-                    <img className={"d-block w-100"} src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg"
+                    <img className={"d-block w-100"} src="img/fish.jpg"
                          alt="Third slide"/>
+                </div>
+                <div className={"carousel-item"}>
+                    <img className={"d-block w-100"} src="img/catdog.jpg"
+                         alt="Fourth slide"/>
                 </div>
             </div>
             <a className={"carousel-control-prev"} href="#carouselExampleFade" role="button" data-slide="prev">
