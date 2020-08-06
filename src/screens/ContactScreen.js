@@ -8,7 +8,7 @@ function ContactScreen() {
         window.scrollTo(0, 0);
     })
     return (
-        <div>
+        <div className={"login-background"}>
             <Contact/>
         </div>
     );

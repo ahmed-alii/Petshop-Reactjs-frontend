@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
@@ -25,12 +25,12 @@ function Navbar() {
                         </Link>
                         <Link to={'/Store'}>
                             <li className={"nav-item"}>
-                                <a className={"nav-link"} href="#">Store</a>
+                                <a className={"nav-link"} href="#">Marketplace</a>
                             </li>
                         </Link>
                         <Link to={'/ContactScreen'}>
                             <li className={"nav-item"}>
-                                <a className={"nav-link"} href="#">Enquire</a>
+                                <a className={"nav-link"} href="#">Contact Us</a>
                             </li>
                         </Link>
                         <Link to={'/Discussion'}>

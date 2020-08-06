@@ -1,40 +1,20 @@
-import React, {useEffect} from "react";
-import StoreItem from "../components/storeItem";
+import React, {useEffect, useState} from "react";
 import PostNewForm from "../components/post_new_ad_modal";
+import {get} from "../server/fetch";
+import StoreItem from "../components/storeItem";
 
 function Store() {
-    let data = [
-        {
-            title: "Product",
-            img: "https://via.placeholder.com/200",
-            price: 20,
-            sellerName: "seller",
-            sellerContact: 123123123,
-            category: "cats",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae semper nunc, at fermentum dolor. In maximus vulputate ligula, in venenatis lorem rutrum ac. In."
-        },
-        {
-            title: "Product",
-            img: "https://via.placeholder.com/200",
-            price: 20,
-            sellerName: "seller",
-            sellerContact: 123123123,
-            category: "cats",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae semper nunc, at fermentum dolor. In maximus vulputate ligula, in venenatis lorem rutrum ac. In."
-        },
-        {
-            title: "Product",
-            img: "https://via.placeholder.com/200",
-            price: 20,
-            sellerName: "seller",
-            sellerContact: 123123123,
-            category: "cats",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae semper nunc, at fermentum dolor. In maximus vulputate ligula, in venenatis lorem rutrum ac. In."
-        },
-    ]
+    let [data, getData] = useState(undefined)
 
     useEffect(() => {
         window.scrollTo(0, 0);
+
+        if (data === undefined) {
+            get("/shop").then(r => {
+                getData(r)
+            })
+        }
+
     })
 
     return (
@@ -57,7 +37,7 @@ function Store() {
                 </div>
             </div>
             <div className="row">
-                {data.map((item, key) => {
+                {data && data.map((item, key) => {
                     return (
                         <div className="col-3 my-3">
                             <StoreItem title={item.title} category={item.category} description={item.description}

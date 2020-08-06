@@ -1,10 +1,19 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import PostNewForm from "../components/post_new_ad_modal";
+import {get} from "../server/fetch";
 
 function Discussion() {
+    let [data, getData] = useState(undefined)
 
     useEffect(() => {
         window.scrollTo(0, 0);
+
+        if (data === undefined) {
+            get("/discuss").then(r => {
+                getData(r)
+            })
+        }
+
     })
 
     return (
@@ -28,108 +37,24 @@ function Discussion() {
             </div>
             <br/>
             <div className="row">
-                <div className="col-12 mb-2">
-                    <div className="card">
-                        <div className="card-body d-flex align-items-center justify-content-between flex-wrap">
-                            <div className="">
-                                <p className="font-weight-bold text-truncate mb-0">This is some text within a panel
-                                    body.</p>
-                            </div>
-                            <div className="">
-                                <p className="text-muted mb-0">Comments: <span
-                                    className="badge badge-danger ml-2">9</span></p>
-                            </div>
-                            <div className="">
-                                <button className="btn btn-primary btn-sm">Post your answer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-12 mb-2">
-                    <div className="card">
-                        <div className="card-body d-flex align-items-center justify-content-between flex-wrap">
-                            <div className="">
-                                <p className="font-weight-bold text-truncate mb-0">This is some text within a panel
-                                    body.</p>
-                            </div>
-                            <div className="">
-                                <p className="text-muted mb-0">Comments: <span
-                                    className="badge badge-danger ml-2">9</span></p>
-                            </div>
-                            <div className="">
-                                <button className="btn btn-primary btn-sm">Post your answer</button>
+                {data && data.map((item, key) => (
+                    <div className="col-12 mb-2">
+                        <div className="card">
+                            <div className="card-body row">
+                                <div className="col-7">
+                                    <p className="font-weight-bold text-truncate mb-0">{item.title}</p>
+                                </div>
+                                <div className="col-2">
+                                    <p className="text-muted mb-0">Comments: <span
+                                        className="badge badge-danger ml-2">{item.comments}</span></p>
+                                </div>
+                                <div className="col-3">
+                                    <button className="btn btn-primary btn-sm">Post your answer</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-12 mb-2">
-                    <div className="card">
-                        <div className="card-body d-flex align-items-center justify-content-between flex-wrap">
-                            <div className="">
-                                <p className="font-weight-bold text-truncate mb-0">This is some text within a panel
-                                    body.</p>
-                            </div>
-                            <div className="">
-                                <p className="text-muted mb-0">Comments: <span
-                                    className="badge badge-danger ml-2">9</span></p>
-                            </div>
-                            <div className="">
-                                <button className="btn btn-primary btn-sm">Post your answer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-12 mb-2">
-                    <div className="card">
-                        <div className="card-body d-flex align-items-center justify-content-between flex-wrap">
-                            <div className="">
-                                <p className="font-weight-bold text-truncate mb-0">This is some text within a panel
-                                    body.</p>
-                            </div>
-                            <div className="">
-                                <p className="text-muted mb-0">Comments: <span
-                                    className="badge badge-danger ml-2">9</span></p>
-                            </div>
-                            <div className="">
-                                <button className="btn btn-primary btn-sm">Post your answer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-12 mb-2">
-                    <div className="card">
-                        <div className="card-body d-flex align-items-center justify-content-between flex-wrap">
-                            <div className="">
-                                <p className="font-weight-bold text-truncate mb-0">This is some text within a panel
-                                    body.</p>
-                            </div>
-                            <div className="">
-                                <p className="text-muted mb-0">Comments: <span
-                                    className="badge badge-danger ml-2">9</span></p>
-                            </div>
-                            <div className="">
-                                <button className="btn btn-primary btn-sm">Post your answer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-12 mb-2">
-                    <div className="card">
-                        <div className="card-body d-flex align-items-center justify-content-between flex-wrap">
-                            <div className="">
-                                <p className="font-weight-bold text-truncate mb-0">This is some text within a panel
-                                    body.</p>
-                            </div>
-                            <div className="">
-                                <p className="text-muted mb-0">Comments: <span
-                                    className="badge badge-danger ml-2">9</span></p>
-                            </div>
-                            <div className="">
-                                <button className="btn btn-primary btn-sm">Post your answer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
             <PostNewForm/>
         </div>
